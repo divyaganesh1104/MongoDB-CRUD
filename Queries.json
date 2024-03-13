@@ -1,0 +1,190 @@
+
+db.academic_records.insertOne({
+    "student_id": "1001",
+    "name": "John Doe",
+    "grades": {
+        "Math": 85,
+        "Science": 90,
+        "English": 78,
+        "History": 92
+    },
+    "subjects": [
+        "Math",
+        "Science",
+        "English",
+        "History"
+    ],
+    "academic_information": {
+        "class_rank": 3,
+        "total_credits": 24,
+        "attendance": "95%"
+    }
+})
+
+db.academic_records.insertMany([
+    {
+        "student_id": "1002",
+        "name": "Jane Smith",
+        "grades": {
+            "Math": 92,
+            "Science": 88,
+            "English": 95,
+            "History": 84
+        },
+        "subjects": [
+            "Math",
+            "Science",
+            "English",
+            "History"
+        ],
+        "academic_information": {
+            "class_rank": 1,
+            "total_credits": 26,
+            "attendance": "98%"
+        }
+    },
+    {
+        "student_id": "1003",
+        "name": "Alice Johnson",
+        "grades": {
+            "Math": 78,
+            "Science": 85,
+            "English": 80,
+            "History": 72
+        },
+        "subjects": [
+            "Math",
+            "Science",
+            "English",
+            "History"
+        ],
+        "academic_information": {
+            "class_rank": 5,
+            "total_credits": 22,
+            "attendance": "92%"
+        }
+    }
+])
+
+db.academic_records.find()
+student_records> db.academic_records.findOne()
+db.academic_records.find({student_id: "1001"
+},
+{student_id: 1,name: 1,_id: 0
+})
+db.academic_records.updateOne({student_id: "1001"
+},
+{$set: {name: "Divya"
+    }
+})
+db.academic_records.updateMany({},
+{$inc: {
+        "grades.Math": 10
+    }
+})
+db.academic_records.updateOne({student_id: "1002"
+},
+{$set: {
+        "academic_information.attendance": "92%"
+    }
+})
+db.academic_records.deleteOne({student_id: "1001"
+})
+db.academic_records.deleteMany({
+    "academic_information.attendance": "92%"
+})
+
+db.co_curricular.insertOne({
+    "student_id": "1001",
+    "name": "John Doe",
+    "activities": [
+        {
+            "activity_type": "Debate Club",
+            "duration": "2 years",
+            "achievements": [
+                "1st Place in Regional Debate Competition (2022)",
+                "Best Speaker Award in School Debate (2023)"
+            ]
+        },
+        {
+            "activity_type": "Chess Club",
+            "duration": "3 years",
+            "achievements": [
+                "Runner-up in Inter-school Chess Tournament (2021)",
+                "Team Captain (2022-2023)"
+            ]
+        }
+    ]
+}
+)
+
+db.co_curricular.insertMany([
+    {
+        "student_id": "1002",
+        "name": "Jane Smith",
+        "activities": [
+            {
+                "activity_type": "Art Club",
+                "duration": "4 years",
+                "achievements": [
+                    "1st Prize in School Art Exhibition (2021)",
+                    "Selected for Regional Art Competition (2022)"
+                ]
+            },
+            {
+                "activity_type": "Drama Club",
+                "duration": "3 years",
+                "achievements": [
+                    "Lead role in School Play (2023)",
+                    "Best Actress Award in Interschool Drama Fest (2024)"
+                ]
+            }
+        ]
+    },
+    {
+        "student_id": "1003",
+        "name": "Alice Johnson",
+        "activities": [
+            {
+                "activity_type": "Music Club",
+                "duration": "3 years",
+                "achievements": [
+                    "Grade 5 Piano Certification (2022)",
+                    "Solo Performance at School Annual Day (2023)"
+                ]
+            },
+            {
+                "activity_type": "Community Service",
+                "duration": "2 years",
+                "achievements": [
+                    "Volunteer of the Year Award (2023)",
+                    "Organized Fundraising Event for Local Charity (2024)"
+                ]
+            }
+        ]
+    }
+]
+  )
+
+  db.co_curricular.find()
+  db.co_curricular.findOne({
+    "activities.duration": "3 years"
+})
+  db.co_curricular.find({
+    "activities.duration": "3 years"
+},
+{
+    "activities.duration": 1,_id: 0
+})
+  db.co_curricular.updateOne({student_id: "1003"
+},
+{$set: {name: "Divya"
+    }
+})
+  db.co_curricular.updateMany({},
+{$set: {name: "Divya"
+    }
+})
+  db.co_curricular.deleteOne({student_id: "1003"
+})
+  db.co_curricular.deleteMany({})
